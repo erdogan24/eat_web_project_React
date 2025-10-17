@@ -13,7 +13,7 @@ const initialFriends = [
   },
   {
     id: 499476,
-    name: "Irem",
+    name: "Tim",
     image: "https://i.pravatar.cc/48?u=499476",
     balance: 0,
   },
@@ -41,5 +41,10 @@ function FriendsList() {
 }
 
 function Friend({ friend }) {
-  return <li>{friend.name}</li>;
+  return (
+    <li>
+      <img src={friend.image} alt={friend.name} />
+      <h3>{friend.name}</h3>
+    </li>
+  );
 }
