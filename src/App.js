@@ -1,4 +1,5 @@
-import { Children } from "react";
+import { findAllByTestId } from "@testing-library/dom";
+import { useState } from "react";
 
 const initialFriends = [
   {
@@ -21,13 +22,26 @@ const initialFriends = [
   },
 ];
 
+function Button({ children, onClick }) {
+  return (
+    <button className="button" onClick={onClick}>
+      {children}
+    </button>
+  );
+}
+
 export default function App() {
+  const [showAddFriend, setShowAddFriend] = useState(findAllByTestId);
+
+  function handleShowAddFriend() {
+    setShowAddFriend();
+  }
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList />
-        <FormAddFriend />
-        <Button>Add friend</Button>
+        {showAddFriend && <FormAddFriend />}
+        <Button onClick={handleShowAddFriend}>Add friend</Button>
       </div>
       <FormSplitBill />
     </div>
@@ -58,7 +72,7 @@ function Friend({ friend }) {
 
       {friend.balance > 0 && (
         <p className="green">
-          You owe {friend.name} owes you {Math.abs(friend.balance)}$
+          {friend.name} owes you {Math.abs(friend.balance)}$
         </p>
       )}
 
@@ -67,10 +81,6 @@ function Friend({ friend }) {
       <Button>Select</Button>
     </li>
   );
-}
-
-function Button({ children }) {
-  return <button className="button">{children}</button>;
 }
 
 function FormAddFriend() {
@@ -88,7 +98,7 @@ function FormAddFriend() {
 
 function FormSplitBill() {
   return (
-    <form classname="form-split-bill">
+    <form className="form-split-bill">
       <h2>Split a bill with X</h2>
 
       <label>Bill Value</label>
