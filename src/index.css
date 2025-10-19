@@ -1,8 +1,9 @@
 :root {
-  --color-lightest: #fff4e6;
-  --color-light: #ffe8cc;
-  --color-medium: #ffa94d;
-  --color-dark: #ff922b;
+  /* Profesyonel palet: slate + indigo */
+  --color-lightest: #f6f8fb; /* kart/form arkaplanı (çok açık mavi-gri) */
+  --color-light: #e3e8f4; /* kenarlıklar, input border */
+  --color-medium: #4f46e5; /* ana vurgu (indigo 600) — buton arka planı */
+  --color-dark: #3730a3; /* hover/focus (indigo 800) */
 }
 
 * {
@@ -19,10 +20,11 @@ html {
 
 body {
   height: 100vh;
-  color: #495057;
+  color: #334155; /* slate-700, metin rengi */
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #ffffff; /* istersen #f8fafc ile çok hafif gri yapabilirsin */
 }
 
 .app {
@@ -35,13 +37,13 @@ body {
 
 .button {
   background-color: var(--color-medium);
-  color: #343a40;
+  color: #ffffff; /* kontrast artırıldı */
   padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 7px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.25s ease, transform 0.05s ease;
 }
 
 .button:hover {
@@ -65,7 +67,7 @@ body {
 
   padding: 1.2rem;
   border-radius: 7px;
-  transition: 0.5s;
+  transition: background-color 0.25s ease;
 }
 
 .selected,
@@ -100,11 +102,11 @@ body {
 }
 
 .green {
-  color: #66a80f;
+  color: #16a34a; /* modern başarı rengi (emerald) */
 }
 
 .red {
-  color: #e03131;
+  color: #dc2626; /* modern hata rengi (red) */
 }
 
 form {
@@ -146,13 +148,15 @@ select {
   text-align: center;
   border: 1px solid var(--color-light);
   border-radius: 4px;
-  transition: 0.3s;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background: #ffffff;
 }
 
 input:focus,
 select:focus {
   outline: none;
   border: 1px solid var(--color-dark);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); /* indigo focus halkası */
 }
 
 form .button {
@@ -166,4 +170,5 @@ form h2 {
   text-transform: uppercase;
   letter-spacing: -0.5px;
   margin-bottom: 1.6rem;
+  color: #1f2937; /* başlık daha koyu */
 }

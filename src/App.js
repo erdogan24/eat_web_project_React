@@ -34,14 +34,16 @@ export default function App() {
   const [showAddFriend, setShowAddFriend] = useState(findAllByTestId);
 
   function handleShowAddFriend() {
-    setShowAddFriend();
+    setShowAddFriend((show) => !show);
   }
   return (
     <div className="app">
       <div className="sidebar">
         <FriendsList />
         {showAddFriend && <FormAddFriend />}
-        <Button onClick={handleShowAddFriend}>Add friend</Button>
+        <Button onClick={handleShowAddFriend}>
+          {showAddFriend ? "Close" : "Add friend"}
+        </Button>
       </div>
       <FormSplitBill />
     </div>
